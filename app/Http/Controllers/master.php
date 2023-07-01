@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Newsletter;
+
+
 
 class master extends Controller
 {
@@ -71,4 +74,24 @@ class master extends Controller
 
       return view('pages.TrainingProgramming');
     }
+
+
+    public function subscribed(Request $request){
+
+      $request->validate([
+        'subscription_email'=>'required|email',
+    ]);
+
+    if(Newsletter::isSubscribed($request->subscription_email)){
+      return redirect()->back()->with('error','Email already subscribed');
+  }
+  else
+  {
+      Newsletter::subscribe($request->subscription_email);
+      return redirect()->back()->with('success','Email subscription successfull');
+  }
+     
+      
+}
+
 }

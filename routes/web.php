@@ -29,3 +29,4 @@ Route::get('Content-Management-System',[master::class,'CMS'])->name('Content-Man
 Route::get('Search-Engine-Optimisation',[master::class,'SEO'])->name('Search-Engine-Optimisation');
 Route::get('Software-Development',[master::class,'SoftwareDevelopment'])->name('Software-Development');
 
+Route::post('subscribe',[master::class,'subscribed'])->name('subscribe');
